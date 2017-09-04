@@ -2,6 +2,16 @@
 
   <PropertyGroup>
     <TargetFramework>netstandard2.0</TargetFramework>
+    <PackageId>CacheUpFront</PackageId>
+    <PackageLicenseUrl>https://github.com/hansarnevartdal/CacheUpFront/blob/master/LICENSE</PackageLicenseUrl>
+    <Title>Cache Up Front</Title>
+    <PackageVersion>0.0.1</PackageVersion>
+    <Authors>Hans Arne Vartdal</Authors>
+    <Description>Simple solution for loading an object cache from Redis into local memory on startup, and keeping it in sync.</Description>
+    <PackageRequireLicenseAcceptance>false</PackageRequireLicenseAcceptance>
+    <PackageReleaseNotes>First release</PackageReleaseNotes>
+    <Copyright>Copyright (c) 2017 </Copyright>
+    <PackageTags>cache upfront redis inmemory startup</PackageTags>
   </PropertyGroup>
 
   <ItemGroup>
