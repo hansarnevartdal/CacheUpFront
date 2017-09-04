@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace CacheUpFront
+namespace CacheUpFront.Models
 {
     public abstract class Entity
     {

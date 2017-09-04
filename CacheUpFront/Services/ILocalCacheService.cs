@@ -1,4 +1,5 @@
-﻿using System.Threading.Tasks;
+﻿using CacheUpFront.Models;
+using System.Threading.Tasks;
 
 namespace CacheUpFront.Services
 {

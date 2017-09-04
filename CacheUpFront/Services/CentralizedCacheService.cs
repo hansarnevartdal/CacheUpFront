@@ -1,4 +1,5 @@
 ﻿using CacheUpFront.Configuration;
+using CacheUpFront.Models;
 using Serilog;
 using StackExchange.Redis;
 using System;

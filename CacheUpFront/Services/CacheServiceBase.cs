@@ -1,4 +1,5 @@
 ﻿using CacheUpFront.Configuration;
+using CacheUpFront.Models;
 using Newtonsoft.Json;
 using StackExchange.Redis;
 using System;

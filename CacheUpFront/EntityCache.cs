@@ -1,4 +1,5 @@
-﻿using System.Collections.Concurrent;
+﻿using CacheUpFront.Models;
+using System.Collections.Concurrent;
 
 namespace CacheUpFront
 {
