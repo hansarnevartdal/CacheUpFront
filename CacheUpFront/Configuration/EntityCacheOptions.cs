@@ -2,7 +2,7 @@
 
 namespace CacheUpFront.Configuration
 {
-    public class RedisConfiguration : IRedisConfiguration
+    public class EntityCacheOptions : IEntityCacheOptions
     {
         public IList<string> Endpoints { get; set; }
         public bool PreserveAsyncOrder { get; set; } = true;

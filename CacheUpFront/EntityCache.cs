@@ -3,7 +3,7 @@ using System.Collections.Concurrent;
 
 namespace CacheUpFront
 {
-    public class EntityCache<TEntity> : ConcurrentDictionary<string, TEntity>, IEntityCache<TEntity> where TEntity : Entity
+    public class EntityCache<TEntity> : ConcurrentDictionary<string, TEntity>, IEntityCache<TEntity> where TEntity : IEntity
     {
         public void AddOrUpdate(TEntity entity)
         {

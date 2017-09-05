@@ -9,12 +9,12 @@ using System.Threading.Tasks;
 
 namespace CacheUpFront.Services
 {
-    public class CentralizedCacheService<TEntity> : CacheServiceBase<TEntity>, ICentralizedCacheService<TEntity> where TEntity : Entity
+    public class CentralizedCacheService<TEntity> : CacheServiceBase<TEntity>, ICentralizedCacheService<TEntity> where TEntity : IEntity
     {
         private readonly IDatabase _db;
         private readonly ILogger _logger;
 
-        public CentralizedCacheService(IConnectionMultiplexer connectionMultiplexer, IRedisConfiguration redisConfiguration, ILogger logger) : base(redisConfiguration)
+        public CentralizedCacheService(IConnectionMultiplexer connectionMultiplexer, IEntityCacheOptions redisConfiguration, ILogger logger) : base(redisConfiguration)
         {
             _db = connectionMultiplexer.GetDatabase();
             _logger = logger;

@@ -4,7 +4,7 @@ using System.Threading.Tasks;
 
 namespace CacheUpFront.Services
 {
-    public interface ICentralizedCacheService<T> where T : Entity
+    public interface ICentralizedCacheService<T> where T : IEntity
     {
         Task AddOrUpdate(T entity);
         Task AddOrUpdate(IList<T> entities);

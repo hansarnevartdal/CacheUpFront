@@ -7,13 +7,13 @@ using System.Text;
 
 namespace CacheUpFront.Services
 {
-    public abstract class CacheServiceBase<TEntity> where TEntity : Entity
+    public abstract class CacheServiceBase<TEntity> where TEntity : IEntity
     {
         protected readonly string KeyPrefix;
         protected readonly string EntityName;
         protected readonly string TrackingSetKey;
 
-        protected CacheServiceBase(IRedisConfiguration redisConfiguration)
+        protected CacheServiceBase(IEntityCacheOptions redisConfiguration)
         {
             // Set naming
             var componentPrefix = typeof(TEntity).Assembly.GetName().Name.ToLowerInvariant().Replace('.', ':');

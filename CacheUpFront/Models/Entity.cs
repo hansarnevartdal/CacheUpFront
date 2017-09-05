@@ -2,8 +2,8 @@
 
 namespace CacheUpFront.Models
 {
-    public abstract class Entity
+    public interface IEntity
     {
-        public string Id { get; set; }
+        string Id { get; set; }
     }
 }

@@ -10,7 +10,7 @@ using System.Threading.Tasks;
 
 namespace CacheUpFront.Services
 {
-    public class LocalCacheService<TEntity> : CacheServiceBase<TEntity>, ILocalCacheService<TEntity> where TEntity : Entity
+    public class LocalCacheService<TEntity> : CacheServiceBase<TEntity>, ILocalCacheService<TEntity> where TEntity : IEntity
     {
         protected readonly IConnectionMultiplexer ConnectionMultiplexer;
         protected readonly IDatabase Db;
@@ -18,9 +18,9 @@ namespace CacheUpFront.Services
 
         private readonly IEntityCache<TEntity> _entityCache;
         private readonly ILogger _logger;
-        private readonly IRedisConfiguration _redisConfiguration;
+        private readonly IEntityCacheOptions _redisConfiguration;
 
-        public LocalCacheService(IConnectionMultiplexer connectionMultiplexer, IEntityCache<TEntity> entityCache, ILogger logger, IRedisConfiguration redisConfiguration) : base(redisConfiguration)
+        public LocalCacheService(IConnectionMultiplexer connectionMultiplexer, IEntityCache<TEntity> entityCache, ILogger logger, IEntityCacheOptions redisConfiguration) : base(redisConfiguration)
         {
             _entityCache = entityCache;
             _logger = logger;
