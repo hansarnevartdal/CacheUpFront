@@ -8,38 +8,37 @@ namespace CacheUpFront.Autofac
     public static class ContainerBuilderExtensions
     { 
 
-        public static void RegisterEntityCacheDataConsumer(this ContainerBuilder containerBuilder, IRedisConfiguration redisConfiguration)
+        public static void RegisterEntityCacheDataConsumer(this ContainerBuilder containerBuilder, IEntityCacheOptions entityCacheOptions)
         {
             containerBuilder.RegisterGeneric(typeof(EntityCache<>)).As(typeof(IEntityCache<>)).SingleInstance();
             containerBuilder.RegisterGeneric(typeof(LocalCacheService<>)).As(typeof(ILocalCacheService<>)).SingleInstance();
-            containerBuilder.RegisterEntityCacheConfiguration(redisConfiguration);
+            containerBuilder.RegisterEntityCacheConfiguration(entityCacheOptions);
         }
 
-        public static void RegisterEntityCacheDataProvider(this ContainerBuilder containerBuilder, IRedisConfiguration redisConfiguration)
+        public static void RegisterEntityCacheDataProvider(this ContainerBuilder containerBuilder, IEntityCacheOptions entityCacheOptions)
         {
             containerBuilder.RegisterGeneric(typeof(CentralizedCacheService<>)).As(typeof(ICentralizedCacheService<>)).SingleInstance();
-            containerBuilder.RegisterEntityCacheConfiguration(redisConfiguration);
+            containerBuilder.RegisterEntityCacheConfiguration(entityCacheOptions);
         }
 
-        private static void RegisterEntityCacheConfiguration(this ContainerBuilder containerBuilder, IRedisConfiguration redisConfiguration)
+        private static void RegisterEntityCacheConfiguration(this ContainerBuilder containerBuilder, IEntityCacheOptions entityCacheOptions)
         {
-            containerBuilder.RegisterType<RedisConfiguration>().AsImplementedInterfaces().SingleInstance();
+            containerBuilder.RegisterInstance(entityCacheOptions).AsImplementedInterfaces().SingleInstance();
             containerBuilder.Register(c =>
             {
-                var configurationSettings = c.Resolve<IRedisConfiguration>();
                 var redisOptions = new ConfigurationOptions
                 {
                     AllowAdmin = false,
                     Ssl = false,
-                    AbortOnConnectFail = configurationSettings.AbortOnConnectFail
+                    AbortOnConnectFail = entityCacheOptions.AbortOnConnectFail
                 };
-                foreach (var endpoint in configurationSettings.Endpoints)
+                foreach (var endpoint in entityCacheOptions.Endpoints)
                 {
                     redisOptions.EndPoints.Add(endpoint);
                 }
 
                 var multiplexer = ConnectionMultiplexer.Connect(redisOptions);
-                multiplexer.PreserveAsyncOrder = configurationSettings.PreserveAsyncOrder;
+                multiplexer.PreserveAsyncOrder = entityCacheOptions.PreserveAsyncOrder;
                 return multiplexer;
             }).As<IConnectionMultiplexer>().SingleInstance();
         }

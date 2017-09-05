@@ -7,7 +7,7 @@ namespace CacheUpFront.Autofac
 {
     public static class AppBuilderExtensions
     {
-        public static IApplicationBuilder UseEntityCache<TEntity>(this IApplicationBuilder app, IContainer container) where TEntity : Entity
+        public static IApplicationBuilder UseEntityCache<TEntity>(this IApplicationBuilder app, IContainer container) where TEntity : IEntity
         {
 
             var localCacheService = container.Resolve<ILocalCacheService<TEntity>>();
