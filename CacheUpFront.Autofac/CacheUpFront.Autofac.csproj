@@ -5,13 +5,14 @@
     <PackageId>CacheUpFront.Autofac</PackageId>
     <PackageLicenseUrl>https://github.com/hansarnevartdal/CacheUpFront/blob/master/LICENSE</PackageLicenseUrl>
     <Title>CacheUpFront.Autofac</Title>
-    <PackageVersion>0.0.1</PackageVersion>
     <Authors>Hans Arne Vartdal</Authors>
     <Description>Extensions for registering Cache Up Front with autofac</Description>
     <PackageRequireLicenseAcceptance>false</PackageRequireLicenseAcceptance>
     <PackageReleaseNotes>First release</PackageReleaseNotes>
     <Copyright>Copyright (c) 2017 </Copyright>
     <PackageTags>cache upfront redis inmemory startup autofac</PackageTags>
+    <IncludeSymbols>True</IncludeSymbols>
+    <IncludeSource>True</IncludeSource>
   </PropertyGroup>
 
   <ItemGroup>
