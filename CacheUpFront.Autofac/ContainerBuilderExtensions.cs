@@ -1,6 +1,7 @@
 ﻿using Autofac;
 using CacheUpFront.Configuration;
 using CacheUpFront.Services;
+using Serilog;
 using StackExchange.Redis;
 
 namespace CacheUpFront.Autofac
@@ -23,6 +24,10 @@ namespace CacheUpFront.Autofac
 
         private static void RegisterEntityCacheConfiguration(this ContainerBuilder containerBuilder, IEntityCacheOptions entityCacheOptions)
         {
+            containerBuilder.Register<ILogger>((c, p) =>
+            {
+                return new LoggerConfiguration().CreateLogger();
+            }).SingleInstance();
             containerBuilder.RegisterInstance(entityCacheOptions).AsImplementedInterfaces().SingleInstance();
             containerBuilder.Register(c =>
             {
