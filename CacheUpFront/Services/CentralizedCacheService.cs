@@ -22,7 +22,7 @@ namespace CacheUpFront.Services
 
         public async Task EnableKeyEvents()
         {
-            await _db.ExecuteAsync("SET CONFIG notify-keyspace-events AKE");
+            await _db.ExecuteAsync("SET notify-keyspace-events AKE");
         }
 
         public async Task AddOrUpdate(TEntity entity)
