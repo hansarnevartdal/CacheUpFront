@@ -6,6 +6,7 @@ namespace CacheUpFront.Services
 {
     public interface ICentralizedCacheService<T> where T : IEntity
     {
+        Task EnableKeyEvents();
         Task AddOrUpdate(T entity);
         Task AddOrUpdate(IList<T> entities);
         Task Remove(string id);

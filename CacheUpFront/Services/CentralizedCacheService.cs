@@ -20,6 +20,11 @@ namespace CacheUpFront.Services
             _logger = logger;
         }
 
+        public async Task EnableKeyEvents()
+        {
+            await _db.ExecuteAsync("SET CONFIG notify-keyspace-events AKE");
+        }
+
         public async Task AddOrUpdate(TEntity entity)
         {
             if (entity?.Id == null)
@@ -31,7 +36,7 @@ namespace CacheUpFront.Services
             if (success)
             {
                 _logger.Information($"Added {EntityName} with id {entity.Id} to redis cache.");
-
+                
                 var trackingAdded = await _db.SetAddAsync(TrackingSetKey, entity.Id).ConfigureAwait(false);
                 if (trackingAdded)
                 {
