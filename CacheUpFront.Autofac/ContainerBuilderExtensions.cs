@@ -33,7 +33,7 @@ namespace CacheUpFront.Autofac
             {
                 var redisOptions = new ConfigurationOptions
                 {
-                    AllowAdmin = false,
+                    AllowAdmin = true,
                     Ssl = false,
                     AbortOnConnectFail = entityCacheOptions.AbortOnConnectFail
                 };
